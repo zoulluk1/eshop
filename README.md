@@ -2,7 +2,7 @@
 
 ## Client:
   ### Instalace:
-    $ cd client
+    
     $ npm init vue@latest
     
       ✔ Project name: … <your-project-name>
@@ -18,6 +18,7 @@
 Scaffolding project in ./<your-project-name>...
 Done
   ### nastavení projektu:
+    $ cd client
     $ npm install
     $ npm run dev
     $ npm run build
