@@ -1,9 +1,20 @@
-<script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
+<script >
+import About from "@/components/About.vue"
+export default {
+  components: {About},
+  name:"HomeView"
+}
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="row">
+    <div class="col-md-6 offset-md-3 p-5 bg-light">
+
+      <About></About>
+    </div>
+  </div>
+
+
+
+
 </template>
