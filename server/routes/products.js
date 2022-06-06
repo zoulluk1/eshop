@@ -8,33 +8,7 @@ const db = require('better-sqlite3')('products.sqlite', options);
 
 
 
-let products = [
-    {
-        id: 20,
-        image: 'https://cdn.alza.cz/Foto/f8/EN/ENDER01V2.jpg',
-        productName: "3D tiskárna",
-        productCode: "123-456",
-        price:10000,
-        inStock: 3,
-        text: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam egestas wisi a erat.
-Integer tempor. Pellentesque ipsum. Integer malesuada. Vestibulum fermentum tortor id mi. Aenean placerat.
-Pellentesque arcu. Phasellus rhoncus.
-`
-    },
-    {
-        id: 10,
-        image: 'https://cdn.prusa3d.com/content/images/product/default/3325.jpg',
-        productName: "3D tiskárna",
-        productCode: "123-456",
-        price:10000,
-        inStock: 3,
-        text: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam egestas wisi a erat.
-Integer tempor. Pellentesque ipsum. Integer malesuada. Vestibulum fermentum tortor id mi. Aenean placerat.
-Pellentesque arcu. Phasellus rhoncus.
-`
-    },
-
-];
+let products = [];
 router.get("/", function (req, res, next) {
     const row = db.prepare('SELECT * FROM product').all();
 
