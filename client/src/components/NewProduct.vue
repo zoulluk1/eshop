@@ -17,7 +17,7 @@
           </div>
           <div class="col">
             <label class="form-label">Počet položek skladem </label>
-            <input v-model="product.amount" type="number" class="form-control" placeholder="1"/>
+            <input v-model="product.inStock" type="number" class="form-control" placeholder="1"/>
           </div>
           <div class="col">
             <label class="form-label">Cena </label>
@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <button type="button" class="btn float-end btn-primary">Odeslat <em class="bi-check"/></button>
+      <button type="button" @click= "send" class="btn float-end btn-primary">Odeslat <em class="bi-check"/></button>
     </div>
   </div>
 </template>
@@ -50,17 +50,40 @@ export default {
   data() {
     return {
       product: {
-        id: null,
-        productCode: null,
+
+        productCode: '000-000',
         productName: null,
-        amount: null,
-        price: null,
+        inStock: 0,
+        price: 0,
         text: null,
         image: null,
       }
     }
   },
+  methods: {
+    onImage(e) {
+
+    },
+    async send() {
+      try {
+        console.log(this.product);
+        await fetch('http://localhost:3000/products',
+            {
+              method: 'POST',
+              body: JSON.stringify(this.product),
+              headers:{
+                'Content-type':'application/json'
+              }
+            }
+        )
+        alert("Saved!");
+      } catch (e) {
+        alert(e);
+      }
+    }
+  }
 }
+
 </script>
 
 <style scoped>
