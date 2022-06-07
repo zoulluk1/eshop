@@ -50,7 +50,7 @@ router.patch("/:id", (req, res) => {
         const product = db.prepare('SELECT * FROM product where id = ?').get(id);
         if (product) {
             Object.assign(product, body);
-            const stm = db.prepare("UPDATE product SET productName=?,productCode=?,price=?,inStock=?,text=?,image=? where id=?");
+            const stm = db.prepare('UPDATE product SET productName=?,productCode=?,price=?,inStock=?,text=?,image=? where id=?');
             stm.run(product.productName,product.productCode,product.price,product.inStock,product.text,product.image,parseInt(id));
 
 

@@ -21,7 +21,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="/NewProduct">Přidat nový produkt</a></li>
-              <li><a class="dropdown-item" href="/Managment" >Sparavovat produkty</a></li>
+              <li><a class="dropdown-item" href="/Management" >Sparavovat produkty</a></li>
 
 
             </ul>
