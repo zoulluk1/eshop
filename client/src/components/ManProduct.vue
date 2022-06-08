@@ -6,41 +6,27 @@
           <img :src="image" alt="" class="card-img" style="height: 90px;width: 90px">
         </div>
         <div class="col">
-          <p class="card-subtitle">ID: {{id }}</p>
+          <p class="card-title">ID: {{id }}</p>
         </div>
         <div class =col>
-          <input v-model="productName" type="text" class="form-control" placeholder="Název produktu"/>
+          <p class="card-title">Název produktu: {{productName }}</p>
         </div>
       </div>
       <div class="row">
 
         <div class="col">
-          <p >Kód produktu:</p>
+          <p class="card-title">Kód produktu: {{ productCode }}</p>
         </div>
         <div class="col">
-          <input v-model="productCode" type="text" class="form-control" placeholder="000-000"/>
+          <p class="card-subtitle">Skladem: {{ inStock }} ks</p>
         </div>
+
         <div class="col">
-          <p >Skladem:</p>
-        </div>
-        <div class="col">
-          <input v-model="inStock" type="number" class="form-control" placeholder="1"/>
-        </div>
-        <div class="col">
-          <p >ks</p>
-        </div>
-        <div class="col">
-          <p >Cena:</p>
-        </div>
-        <div class="col">
-          <input v-model="price" type="number" class="form-control" placeholder="1000"/>
-        </div>
-        <div class="col">
-          <p >kč</p>
+          <p class="card-subtitle">Cena: {{ price }} Kč</p>
+
         </div>
         <div class="row">
-          <p class="form-label">Vložte obrázek</p>
-          <input v-model="image" type="url" class="form-control" placeholder="https://picsum.photos/seed/picsum/500"/>
+
         </div>
         <div class="row">
           <p class="card-subtitle">Popis:</p>
@@ -55,7 +41,10 @@
               <a href="#" @click="del(id)" class="btn btn-primary">Odstranit položku</a>
             </div>
             <div class="col">
-              <a href="#" @click="editData(id)" class="btn btn-primary">upravit</a>
+              <router-link :to="`/UpdateProduct/${id}`" class="btn btn-primary">
+                Upravit
+                <em class="bi-play"/>
+              </router-link>
             </div>
           </div>
         </div>
@@ -80,16 +69,8 @@ export default {
     image: null,
 
   },
-  async mounted() {
-    const id = this.$route.params.id;
-    this.props = await this.getData(id);
-  },
   methods: {
-    async getData(id) {
-      const res = await fetch(`http://localhost:3000/products/${id}`, {method: 'GET'});
-      return res.json();
 
-    },
     async del(id) {
       try {
 
@@ -102,26 +83,7 @@ export default {
         alert(e);
       }
     },
-    async editData(id) {
 
-      try {
-        console.log(this.props);
-        await fetch(`http://localhost:3000/products/${id}`,
-            {
-              method: 'PATCH',
-              body: JSON.stringify(this.props),
-              headers: {
-                'Content-type': 'application/json'
-              }
-            }
-        )
-
-        alert("Edited!");
-
-      } catch (e) {
-        alert(e);
-      }
-    }
   }
 
 }

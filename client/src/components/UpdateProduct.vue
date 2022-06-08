@@ -8,8 +8,8 @@
       <div class="card-text">
         <div class="row mb-3">
           <div class="col">
-            <label class="form-label">Zadejte Id </label>
-            <input v-model="product.id" type="number" class="form-control" placeholder="1"/>
+
+            <p class="card-title">ID: {{product.id }}</p>
           </div>
           <div class="col">
             <label class="form-label">Zadejte název produktu </label>
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       product: {
-        id: 7,
+        id: null,
         productCode: '000-000',
         productName: null,
         inStock: 0,
@@ -72,11 +72,17 @@ export default {
       this.product = this.getData(id);
     },
     methods: {
+      async getData(id) {
+        const res = await fetch(`http://localhost:3000/products/${id}`, {method: 'GET'});
+        const data = await res.json();
+        console.log(data);
+        this.product = data;
 
+      },
       async editData() {
         try {
           console.log(this.product);
-          await fetch(`http://localhost:3000/products/${this.id}`,
+          await fetch(`http://localhost:3000/products/${this.product.id}`,
               {
                 method: 'PATCH',
                 body: JSON.stringify(this.product),

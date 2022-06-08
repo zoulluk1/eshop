@@ -2,9 +2,9 @@
   <div class="col-md-10 offset-md-1 p-5 bg-light">
 
     <div class="row">
-      <div class="row" v-for="Product in Products">
-        <Product :id="Product.id" :productName="Product.productName" :productCode="Product.productCode"
-                 :price="Product.price" :inStock="Product.inStock" :text="Product.text" :image="Product.image" ></Product>
+      <div class="row" v-for="roduct in Products">
+        <Product :id="roduct.id" :productName="roduct.productName" :productCode="roduct.productCode"
+                 :price="roduct.price" :inStock="roduct.inStock" :text="roduct.text" :image="roduct.image" ></Product>
       </div>
     </div>
   </div>
@@ -19,15 +19,19 @@ export default {
 
   data() {
     return {
-      Products: []
+
+        Products: []
+
     }
   },
-  async created(){
 
-    const res = await fetch('http://localhost:3000/products',{method:'GET'});
-    console.log(res);
-    this.Products=await res.json();
-  }
+    async created() {
+      //await this.getData();
+      const res = await fetch(`http://localhost:3000/products`, {method: 'GET'});
+      console.log(res);
+      this.Products = await res.json();
+    },
+
 }
 
 </script>
