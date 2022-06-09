@@ -10,13 +10,17 @@
 
       <li class="list-group-item"><span class="glyphicon" >&#x2709;</span> example@email.cz</li>
       <li class="list-group-item"><p>Adresa</p>
-            <p>Ulice: Horáčkkova 11 </p>
-            <p>Město: Praha 8 </p>
-            <p>PSČ: 272 01 </p>
+            <p>Ulice: Studničkova 7 </p>
+            <p>Město: Nové Město </p>
+            <p>PSČ: 12800 </p>
       </li>
     </ul>
-
+    <!--Google map-->
+    <div id="map-container" class="z-depth-1-half map-container-3 ">
+      <iframe style="border:none" src="https://frame.mapy.cz/s/ramupurota" width="1300" height="500" frameborder="0"></iframe>
+    </div>
   </div>
+
 
 </template>
 
@@ -27,5 +31,17 @@ export default {
 </script>
 
 <style scoped>
+.map-container-3{
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+}
+.map-container-3 iframe{
+  left:100px;
 
+  top:100px;
+
+  position:absolute;
+}
 </style>

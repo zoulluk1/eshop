@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3" style="width: 1300px; height: 400px ">
+  <div class="card mb-3" style="width: 1300px; height: 300px ">
     <div class="card-body">
       <div class="row">
         <div class="col">
@@ -32,10 +32,13 @@
           <p class="card-subtitle">Popis:</p>
           <textarea v-model="text" class="form-control" rows="3" ></textarea>
         </div>
-        <div class="card-footer">
+        <div class="card-footer" style="background-color: white">
           <div class =row>
             <div class="col">
-              <a href="#" class="btn btn-primary">Zobrazit produkt</a>
+              <router-link :to="`/ProductPage/${id}`" class="btn btn-primary">
+                Zobrazit produkt
+                <em class="bi-play"/>
+              </router-link>
             </div>
             <div class="col">
               <a href="#" @click="del(id)" class="btn btn-primary">Odstranit položku</a>
@@ -75,7 +78,8 @@ export default {
       try {
 
         const res = await fetch(`http://localhost:3000/products/${id}`, {method: 'DELETE'});
-        alert("Deleted!");
+
+          alert("Deleted!");
         return res.json();
       }
 

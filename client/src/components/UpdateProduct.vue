@@ -45,6 +45,13 @@
     <div class="card-footer">
       <button type="button" @click= "editData" class="btn float-end btn-primary">Aktualizovat <em class="bi-check"/></button>
     </div>
+      <div class="card-footer">
+        <router-link :to="`/Management`" class="btn btn-primary">
+          Zpět
+          <em class="bi-play"/>
+        </router-link>
+
+    </div>
   </div>
 </template>
 
