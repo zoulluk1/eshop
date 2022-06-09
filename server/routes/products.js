@@ -19,9 +19,11 @@ router.get('/:id', (req, res, next) => {
     const id = req.params.id
     console.debug(req.params);
     if (id) {
-        const product = products.find((a) => a.id === Number.parseInt(id));
-        const row = db.prepare('SELECT * FROM product where id = ?').get(id);
-        res.send(row);
+
+            const product = products.find((a) => a.id === Number.parseInt(id));
+            const row = db.prepare('SELECT * FROM product where id = ?').get(id);
+            res.send(row);
+
     } else {
 
         res.sendStatus(404);

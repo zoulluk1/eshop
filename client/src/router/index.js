@@ -41,6 +41,7 @@ const router = createRouter({
       component: () => import('../views/ProductPageView.vue')
     }
 
+
   ]
 })
 
